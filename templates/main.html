@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+
+<style>
+    .navbar-text h1 {
+        color: #fff;
+        font-size: 40px;
+        align-content: center;
+    }
+
+    body {
+        background-color: grey;
+    }
+
+    form {
+        margin-top: 50px;
+        margin: auto;
+        width: 35%;
+        ;
+    }
+
+    .result {
+        margin: auto;
+        width: 35%;
+        border: 1px solid #ccc;
+        background-color: grey;
+        color: #fff;
+        padding: 20px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        ;
+    }
+</style>
+
+<head>
+    <title>BigMart Sale Prediction</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-light bg-dark">
+        <span class="navbar-text">
+            <h1>BigMart Sale Prediction using Machine Learning techniques</h1>
+            <h1>techniques used Xgboost,randomforest,Flask,heroku</h1>
+        </span>
+    </nav>
+
+
+
+    <form action="{{ url_for('main') }}" method="POST">
+        <div class="form-group">
+
+
+            <legend>Input Variables</legend>
+            
+            <br>Item_Weight:<br>
+
+            <input name="Item_Weight" type="float" class="form-control" required>
+            <small id="Item_WeightHelp" class="form-text text-muted">Enter the value between 1 to 8</small>
+            <br>
+
+            <br> Item_Fat_Content:<br>
+            <input name="Item_Fat_Content" type="float" class="form-control" required>
+            <small id="Item_Fat_ContentHelp" class="form-text text-muted">Enter 1 = regular Fat and  0 =Low fat</small>
+            <br>
+
+            <br>Item_Visibility:<br>
+            <input name="Item_Visibility" type="float" class="form-control" required>
+            <small id="Item_VisibilityHelp" class="form-text text-muted">Enter the value between 1 and 0 (1=highly visible in the store 0=not visible in the store)</small>
+            <br>
+
+            <br>Item_Type:<br>
+            <input name="Item_Type" type="float" class="form-control" required>
+            <small id="Item_TypeHelp" class="form-text text-muted">0=Dairy,1=Soft Drinks,2=Meat,3=Fruits &vegs,4=Household,5=Baking Goods,6=Snack Foods,7=Frozen Foods,8=Breakfast,9=Healthz&Hyg,10=Hard Drinks,11=Canned,12=Breads,  13=Starchy Foods,14=Seafood,15=Others</small>
+            <br>
+
+            <br>Item_MRP:<br>
+            <input name="Item_MRP" type="float" class="form-control" required>
+            <small id="Item_MRPHelp" class="form-text text-muted">Enter the random value of item price</small>
+            <br>
+
+            <br>Outlet_Establishment_Year:<br>
+            <input name="Outlet_Establishment_Year" type="float" class="form-control" required>
+            <small id="Outlet_Establishment_YearHelp" class="form-text text-muted">Enter the year as 0=1985,1=1987,2=1997,3=1998,4=1999,5=2002,6=2007,7=2009,8=2014</small>
+            <br>
+
+            <br>Outlet_Type:<br>
+            <input name="Outlet_Type" type="float" class="form-control" required>
+            <small id="Outlet_TypeHelp" class="form-text text-muted">Enter 0=grocery store,1=small outlet,2=medium outlet,3=big outlet</small>
+            <br>Outlet_Size:<br>
+            <input name="Outlet_Size" type="float" class="form-control" required>
+            <small id="Outlet_SizeHelp" class="form-text text-muted">Enter small=0,medium=2,big=3</small>
+            <br>
+            <br>Outlet_Location_Type:<br>
+            <input name="Outlet_Location_Type" type="float" class="form-control" required>
+            <small id="Outlet_Location_TypeHelp" class="form-text text-muted">Enter 0=tier 1 city,1=tier 2 city,3=tier 3 city</small>
+            <br>
+            <br>
+            <input type="submit" value="Submit" class="btn btn-primary">
+
+
+
+
+
+        </div>
+
+    </form>
+
+    <br>
+
+    <div class="result" align="center">
+
+        <h1>Predicted Sale:</h1>
+        <p style="font-size:50px">{{ result }}</p>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
